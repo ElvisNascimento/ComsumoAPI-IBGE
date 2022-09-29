@@ -17,24 +17,28 @@ function mostrarEstado(){
         fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/regioes/${regiaoSelecionada}/estados`)
         .then((resposta)=> resposta.json())
         .then((estados)=>{
+            let estadoString = document.getElementById('estado').innerHTML;
             estados.map((cadaEstado)=>{
-                document.getElementById('estado').innerHTML +=`
+                estadoString +=`
                 <option value="${cadaEstado.id}">${cadaEstado.nome}</option>
             `;
         });
+        document.getElementById('estado').innerHTML = estadoString;
     });
 }
 function mostrarCidade(){
     document.getElementById('cidade').innerHTML = `<option id="opcaocidade" value="0">--Selecione--</option>`;
         let estadoSelecionado = estado.value;
-        fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/distritos`)
+        fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`)
         .then( resposta => resposta.json())
         .then((cidades)=>{
             console.log(cidades);
+            let cidadeString = document.getElementById('cidade').innerHTML;
             cidades.map((cadaCidade)=>{
-                document.getElementById('cidade').innerHTML +=`
+                cidadeString +=`
                 <option value="${cadaCidade.id}">${cadaCidade.nome}</option>
             `;
         });
+        document.getElementById('cidade').innerHTML = cidadeString;
     });
 }
