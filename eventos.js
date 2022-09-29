@@ -25,7 +25,7 @@ function mostrarEstado(){
     });
 }
 function mostrarCidade(){
-    // document.getElementById('cidade').innerHTML = `<option id="opcaoEstado" value="0">--Selecione--</option>`;
+    document.getElementById('cidade').innerHTML = `<option id="opcaocidade" value="0">--Selecione--</option>`;
         let estadoSelecionado = estado.value;
         fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/distritos`)
         .then( resposta => resposta.json())
